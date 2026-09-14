@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NODEX — Términos de Uso y Política de Privacidad</title>
+<style>
+  :root {
+    --bg: #eef2f6;
+    --surface: #ffffff;
+    --surface-soft: #f7f9fb;
+    --border: #e1e7ee;
+    --text: #23303c;
+    --text-secondary: #5b6b7c;
+    --accent: #0e7c9e;
+    --accent-soft: #e6f4f8;
+    --pending: #92400e;
+    --pending-bg: #fef1dc;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 16px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 36px 0 64px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(20, 30, 40, 0.06), 0 6px 20px rgba(20, 30, 40, 0.04);
+    padding: 28px 30px 34px;
+  }
+  header {
+    margin-bottom: 20px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(20, 30, 40, 0.25);
+    display: block;
+  }
+  h1 {
+    font-size: 1.55rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+  .tagline {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 4px 0 18px;
+  }
+  .lang-switch {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .lang-switch button {
+    background: var(--surface-soft);
+    color: var(--text-secondary);
+    border: none;
+    padding: 7px 16px;
+    font-size: 0.88rem;
+    cursor: pointer;
+  }
+  .lang-switch button.active {
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+  }
+.doc-tabs {
+    display: flex;
+    gap: 4px;
+    margin: 20px 0 30px;
+    border-bottom: 2px solid var(--border);
+  }
+  .doc-tabs button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: 10px 12px 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: color 0.15s, background 0.15s;
+  }
+  .doc-tabs button:hover {
+    background: var(--surface-soft);
+    color: var(--text);
+  }
+  .doc-tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .doc-tabs .ic { font-size: 1.05em; }
+  .tab-panel { display: none; }
+  .tab-panel.active-tab { display: block; }
+  section {
+    margin-bottom: 36px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin: 0 0 18px;
+  }
+  h2 .ic, h3 .ic {
+    font-size: 1em;
+    line-height: 1;
+  }
+  h3 {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 22px 0 4px;
+    color: var(--text);
+  }
+  p {
+    color: var(--text);
+    margin: 6px 0 14px;
+  }
+  .meta {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border);
+  }
+  ul {
+    margin: 6px 0 14px;
+    padding-left: 22px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 0.92rem;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 9px 11px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--surface-soft);
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background: var(--surface-soft);
+  }
+  .pending {
+    background: var(--pending-bg);
+    color: var(--pending);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 0.9em;
+    font-weight: 600;
+    white-space: normal;
+  }
+  .lang-block { display: none; }
+  .lang-block.visible { display: block; }
+  footer {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 36px;
+    line-height: 1.6;
+  }
+  code {
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+
+  <header>
+    <div class="brand">
+      <img class="brand-icon" src="nodex-logo.png" alt="NODEX">
+      <h1>NODEX</h1>
+    </div>
+    <p class="tagline">Node-to-Node Exchange — Your devices are the network.</p>
+    <div class="lang-switch">
+      <button type="button" data-lang="es" class="active" onclick="setLang('es')">🇪🇸 Español</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+    </div>
+  </header>
+
+  <!-- ================= ES ================= -->
+  <div class="lang-block visible" data-lang="es">
+
+    <div class="doc-tabs">
+      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic">📜</span> Términos de Uso</button>
+      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic">🔒</span> Política de Privacidad</button>
+    </div>
+
+    <section id="terminos-es" class="tab-panel active-tab" data-tab="terms">
+      <h2><span class="ic">📜</span> Términos de Uso y Responsabilidad</h2>
+      <p class="meta">Última actualización: 13 de septiembre de 2026 · Contacto: nodex.dev.mobile@gmail.com</p>
+
+      <h3><span class="ic">✅</span> 1. Aceptación de los términos</h3>
+      <p>Al instalar o usar NODEX, aceptas estos términos. Si no estás de acuerdo, no uses la aplicación.</p>
+
+      <h3><span class="ic">ℹ️</span> 2. Qué es NODEX y qué no es</h3>
+      <p>NODEX es una herramienta de comunicación de voz punto a punto (P2P): conecta dispositivos directamente entre sí por Bluetooth/Wi-Fi Direct, sin servidor intermediario. Esto significa algo importante para tu responsabilidad como usuario: <strong>no existe forma técnica de que NODEX monitoree, modere, filtre, grabe o intervenga en ninguna conversación</strong> — ni siquiera si quisiéramos. No hay un servidor por el que pase el audio para poder revisarlo.</p>
+
+      <h3><span class="ic">🚫</span> 3. Uso permitido y responsabilidad del usuario</h3>
+      <p>Aceptas usar NODEX únicamente de forma legal y respetuosa. Específicamente, aceptas que <strong>no usarás NODEX para</strong>:</p>
+      <ul>
+        <li>Acosar, amenazar, intimidar o dañar a otra persona.</li>
+        <li>Comunicación ilegal bajo las leyes de tu país (fraude, incitación a la violencia, etc.).</li>
+        <li>Suplantar la identidad de otra persona u organización.</li>
+        <li>Intentar dañar, sobrecargar o realizar ingeniería inversa maliciosa de la app o de los dispositivos de otros participantes.</li>
+      </ul>
+      <p><strong>Eres el único responsable del contenido de tus comunicaciones de voz y de las sesiones que crees o a las que te unas.</strong> Como se explica en el punto 2, no podemos revisar, moderar ni eliminar contenido de una conversación en curso — es tu responsabilidad, igual que con cualquier walkie-talkie físico o llamada telefónica.</p>
+
+      <h3><span class="ic">🏍️</span> 4. Seguridad al usar NODEX en movimiento</h3>
+      <p>NODEX está pensado para usarse mientras conduces (ej. en moto), pero <strong>tú eres el único responsable de operar cualquier vehículo de forma segura y de cumplir las leyes de tránsito de tu país sobre uso de dispositivos mientras conduces</strong>. NODEX no asume responsabilidad alguna por accidentes, lesiones o daños relacionados con el uso de la app mientras conduces o realizas cualquier otra actividad que requiera tu atención completa.</p>
+
+      <h3><span class="ic">⚠️</span> 5. Sin garantías</h3>
+      <p>NODEX se ofrece "tal cual" ("as is"), sin garantías de ningún tipo. En particular, no garantizamos: alcance de conexión específico (depende del dispositivo, entorno y obstáculos), ausencia de interrupciones, disponibilidad continua del servicio, ni que el resultado sea adecuado para un propósito particular (por ejemplo, comunicación de seguridad crítica).</p>
+
+      <h3><span class="ic">⚖️</span> 6. Límite de responsabilidad</h3>
+      <p>En la máxima medida permitida por la ley, NODEX y su desarrollador no serán responsables por daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de usar la app, incluyendo — sin limitarse a — pérdida de comunicación en una situación de emergencia, accidentes, o conflictos entre usuarios de una misma sesión.</p>
+
+      <h3><span class="ic">💳</span> 7. Compras dentro de la app (Pro)</h3>
+      <p>El desbloqueo del tier Pro se procesa enteramente a través de Google Play (o Apple App Store cuando exista). Reembolsos, disputas de cobro y gestión de la suscripción/compra se rigen por los términos de esa tienda, no por NODEX directamente.</p>
+
+      <h3><span class="ic">📄</span> 8. Licencia de uso</h3>
+      <p>Te otorgamos una licencia limitada, personal, no exclusiva y no transferible para usar NODEX en tus propios dispositivos, sujeta a estos términos y a las reglas de uso de la tienda desde la que la descargaste (Google Play, y Apple cuando aplique).</p>
+
+      <h3><span class="ic">🔗</span> 9. Términos de terceros</h3>
+      <p>Además de estos términos, debes cumplir los términos de servicio de la tienda desde la que instalaste NODEX (Google Play Terms of Service, y los Apple Media Services Terms and Conditions cuando exista versión iOS).</p>
+
+      <h3><span class="ic">🔞</span> 10. Edad mínima</h3>
+      <p>Debes tener al menos <strong>16 años</strong> para usar NODEX. Si eres menor de esa edad, no debes instalar ni usar la aplicación.</p>
+
+      <h3><span class="ic">⏹️</span> 11. Terminación</h3>
+      <p>Podemos discontinuar NODEX (es un prototipo en desarrollo activo) o restringir su disponibilidad en cualquier momento, sin obligación de mantenimiento o soporte continuo.</p>
+
+      <h3><span class="ic">✏️</span> 12. Cambios a estos términos</h3>
+      <p>Cualquier cambio se reflejará actualizando la fecha en la parte superior de esta página. El uso continuado de la app tras un cambio implica tu aceptación.</p>
+
+      <h3><span class="ic">🏛️</span> 13. Ley aplicable</h3>
+      <p>Estos términos se rigen por las leyes de la <strong>República de Chile</strong>. Cualquier disputa relacionada con el uso de NODEX se someterá a los tribunales competentes de Chile, sin perjuicio de los derechos irrenunciables que la ley de tu país de residencia pueda reconocerte como consumidor.</p>
+    </section>
+
+    <section id="privacidad-es" class="tab-panel" data-tab="privacy">
+      <h2><span class="ic">🔒</span> Política de Privacidad</h2>
+      <p class="meta">Última actualización: 13 de septiembre de 2026 · Contacto: nodex.dev.mobile@gmail.com</p>
+
+      <p><strong>NODEX</strong> es una aplicación de comunicación de voz punto a punto (P2P) que funciona sin internet ni servidores propios, usando Bluetooth y Wi-Fi Direct para conectar dispositivos cercanos directamente entre sí.</p>
+      <p><strong>Qué NO hace NODEX</strong>: no tiene cuentas de usuario, no tiene servidores propios, no muestra publicidad, no graba ni almacena tus conversaciones de voz, no vende ni comparte datos con terceros con fines publicitarios.</p>
+
+      <h3><span class="ic">📊</span> Datos y cómo se manejan</h3>
+      <table>
+        <tr><th>Dato</th><th>Qué pasa con él</th></tr>
+        <tr><td>Alias/nombre que escribes</td><td>Se comparte únicamente con los dispositivos conectados a tu misma sesión, por el canal cifrado P2P. Nunca sale hacia ningún servidor. No se guarda una vez cierras la sesión.</td></tr>
+        <tr><td>Audio de voz</td><td>Se transmite en tiempo real, cifrado de extremo a extremo (AES-256-GCM), directo entre dispositivos. No se graba, no se almacena, no pasa por ningún servidor.</td></tr>
+        <tr><td>Ubicación</td><td>NODEX no lee ni comparte tu ubicación GPS. El permiso de ubicación que pide Android existe únicamente porque el sistema operativo lo exige para el descubrimiento Bluetooth/Wi-Fi en ciertas versiones — la app no consulta tus coordenadas.</td></tr>
+        <tr><td>Cámara</td><td>Se usa solo para escanear el código QR de invitación a una sesión. No se toman fotos, no se guardan ni suben imágenes.</td></tr>
+        <tr><td>Idioma elegido y estado de tu suscripción Pro</td><td>Se guardan únicamente en el almacenamiento seguro de tu propio dispositivo (Keystore de Android). Nunca se transmiten a nosotros ni a nadie.</td></tr>
+        <tr><td>Compra del Pro</td><td>La procesa enteramente Google Play. No vemos ni almacenamos tu información de pago — eso lo maneja Google según su propia política de privacidad.</td></tr>
+        <tr><td>Datos técnicos de diagnóstico (fallos/crashes, y eventos mínimos de uso como "se creó una sala" o "una sesión llegó a 2 participantes")</td><td>Recolectados por Firebase Crashlytics (fallos) y Aptabase (eventos de uso). Cada evento incluye automáticamente datos técnicos del dispositivo (versión de Android/iOS, versión de la app, idioma del sistema) — nunca tu alias, el código de sala, contenido de audio, tu ubicación, ni un identificador que te vincule entre sesiones. Sirven únicamente para detectar errores y medir estabilidad de la conexión, no para perfilarte ni para publicidad.</td></tr>
+      </table>
+
+      <h3><span class="ic">🤝</span> Con quién se comparte</h3>
+      <p>Con nadie fuera de tu sesión P2P local, salvo los datos técnicos de diagnóstico descritos arriba. No existen servidores de NODEX que reciban el contenido de tus comunicaciones. Google Play Services gestiona la conectividad Nearby, Google Play gestiona las compras, y Google (Firebase Crashlytics) y Aptabase reciben únicamente los datos técnicos anónimos de la fila anterior — cada uno bajo su propia política de privacidad.</p>
+
+      <h3><span class="ic">🔐</span> Seguridad</h3>
+      <p>Cada mensaje y cada fragmento de audio viaja cifrado (AES-256-GCM) entre los dispositivos conectados.</p>
+
+      <h3><span class="ic">🗄️</span> Retención</h3>
+      <p>No guardamos nada de tu sesión una vez termina, salvo el idioma elegido y el estado de tu compra Pro, ambos solo en tu dispositivo. Los datos técnicos de diagnóstico (fallos, eventos mínimos de uso) sí se retienen del lado de Firebase Crashlytics y Aptabase, según sus propias políticas de retención — no algo que nosotros controlemos ni almacenemos aparte.</p>
+
+      <h3><span class="ic">🙋</span> Tus derechos</h3>
+      <p>Como no existen cuentas ni servidores, no hay datos nuestros que solicitar o eliminar — desinstalar la app elimina también lo guardado localmente.</p>
+
+      <h3><span class="ic">🔞</span> Menores de edad</h3>
+      <p>NODEX no está dirigida a menores de <strong>16 años</strong> y no solicita conscientemente datos de menores de esa edad. Al no requerir cuentas ni datos personales, no existe un mecanismo dentro de la app para verificar la edad más allá de esta restricción declarada.</p>
+
+      <h3><span class="ic">✏️</span> Cambios a esta política</h3>
+      <p>Se notificarán actualizando la fecha de esta página.</p>
+    </section>
+  </div>
+
+  <!-- ================= EN ================= -->
+  <div class="lang-block" data-lang="en">
+
+    <div class="doc-tabs">
+      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic">📜</span> Terms of Use</button>
+      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic">🔒</span> Privacy Policy</button>
+    </div>
+
+    <section id="terms-en" class="tab-panel active-tab" data-tab="terms">
+      <h2><span class="ic">📜</span> Terms of Use and Responsibility</h2>
+      <p class="meta">Last updated: September 13, 2026 · Contact: nodex.dev.mobile@gmail.com</p>
+
+      <h3><span class="ic">✅</span> 1. Acceptance of terms</h3>
+      <p>By installing or using NODEX, you accept these terms. If you disagree, don't use the app.</p>
+
+      <h3><span class="ic">ℹ️</span> 2. What NODEX is and isn't</h3>
+      <p>NODEX is a peer-to-peer (P2P) voice communication tool: it connects devices directly to each other over Bluetooth/Wi-Fi Direct, with no server in between. This matters for your responsibility as a user: <strong>there is no technical way for NODEX to monitor, moderate, filter, record, or intervene in any conversation</strong> — not even if we wanted to. There's no server the audio passes through to review it.</p>
+
+      <h3><span class="ic">🚫</span> 3. Acceptable use and user responsibility</h3>
+      <p>You agree to use NODEX only legally and respectfully. Specifically, you agree <strong>not to use NODEX to</strong>:</p>
+      <ul>
+        <li>Harass, threaten, intimidate, or harm another person.</li>
+        <li>Engage in communication that's illegal under your country's laws (fraud, incitement to violence, etc.).</li>
+        <li>Impersonate another person or organization.</li>
+        <li>Attempt to damage, overload, or maliciously reverse-engineer the app or other participants' devices.</li>
+      </ul>
+      <p><strong>You are solely responsible for the content of your voice communications and for any sessions you create or join.</strong> As explained in section 2, we cannot review, moderate, or remove content from an ongoing conversation — it's your responsibility, same as with any physical walkie-talkie or phone call.</p>
+
+      <h3><span class="ic">🏍️</span> 4. Safety while using NODEX in motion</h3>
+      <p>NODEX is designed to be used while driving (e.g. on a motorcycle), but <strong>you are solely responsible for operating any vehicle safely and complying with your country's traffic laws about device use while driving</strong>. NODEX assumes no responsibility for accidents, injuries, or damages related to using the app while driving or doing any other activity requiring your full attention.</p>
+
+      <h3><span class="ic">⚠️</span> 5. No warranties</h3>
+      <p>NODEX is provided "as is," with no warranties of any kind. In particular, we don't guarantee: a specific connection range (depends on device, environment, and obstacles), uninterrupted operation, continuous service availability, or fitness for a particular purpose (e.g. safety-critical communication).</p>
+
+      <h3><span class="ic">⚖️</span> 6. Limitation of liability</h3>
+      <p>To the maximum extent permitted by law, NODEX and its developer are not liable for indirect, incidental, special, or consequential damages arising from use or inability to use the app, including — without limitation — loss of communication during an emergency, accidents, or conflicts between users in the same session.</p>
+
+      <h3><span class="ic">💳</span> 7. In-app purchases (Pro)</h3>
+      <p>The Pro tier unlock is processed entirely through Google Play (or Apple's App Store once it exists). Refunds, billing disputes, and subscription/purchase management are governed by that store's terms, not by NODEX directly.</p>
+
+      <h3><span class="ic">📄</span> 8. License grant</h3>
+      <p>We grant you a limited, personal, non-exclusive, non-transferable license to use NODEX on your own devices, subject to these terms and the usage rules of the store you downloaded it from (Google Play, and Apple once applicable).</p>
+
+      <h3><span class="ic">🔗</span> 9. Third-party terms</h3>
+      <p>In addition to these terms, you must comply with the terms of service of the store you installed NODEX from (Google Play Terms of Service, and Apple Media Services Terms and Conditions once an iOS version exists).</p>
+
+      <h3><span class="ic">🔞</span> 10. Minimum age</h3>
+      <p>You must be at least <strong>16 years old</strong> to use NODEX. If you are younger, you must not install or use the app.</p>
+
+      <h3><span class="ic">⏹️</span> 11. Termination</h3>
+      <p>We may discontinue NODEX (it's a prototype under active development) or restrict its availability at any time, with no obligation of continued maintenance or support.</p>
+
+      <h3><span class="ic">✏️</span> 12. Changes to these terms</h3>
+      <p>Any change will be reflected by updating the date at the top of this page. Continued use of the app after a change implies your acceptance.</p>
+
+      <h3><span class="ic">🏛️</span> 13. Governing law</h3>
+      <p>These terms are governed by the laws of the <strong>Republic of Chile</strong>. Any dispute related to the use of NODEX will be submitted to the competent courts of Chile, without prejudice to any non-waivable consumer rights recognized under the laws of your country of residence.</p>
+    </section>
+
+    <section id="privacy-en" class="tab-panel" data-tab="privacy">
+      <h2><span class="ic">🔒</span> Privacy Policy</h2>
+      <p class="meta">Last updated: September 13, 2026 · Contact: nodex.dev.mobile@gmail.com</p>
+
+      <p><strong>NODEX</strong> is a peer-to-peer (P2P) voice communication app that works without internet or our own servers, using Bluetooth and Wi-Fi Direct to connect nearby devices directly to each other.</p>
+      <p><strong>What NODEX does NOT do</strong>: no user accounts, no servers of our own, no ads, no recording or storing your voice conversations, no selling or sharing data with third parties for advertising.</p>
+
+      <h3><span class="ic">📊</span> Data and how it's handled</h3>
+      <table>
+        <tr><th>Data</th><th>What happens to it</th></tr>
+        <tr><td>The alias/name you type</td><td>Shared only with devices connected to your session, over the encrypted P2P channel. Never leaves toward any server. Not kept once you close the session.</td></tr>
+        <tr><td>Voice audio</td><td>Transmitted in real time, end-to-end encrypted (AES-256-GCM), directly between devices. Never recorded, never stored, never routed through any server.</td></tr>
+        <tr><td>Location</td><td>NODEX does not read or share your GPS location. The location permission Android requires exists only because the OS mandates it for Bluetooth/Wi-Fi discovery on certain versions — the app never queries your coordinates.</td></tr>
+        <tr><td>Camera</td><td>Used only to scan a session's invitation QR code. No photos are taken or stored, no images are uploaded anywhere.</td></tr>
+        <tr><td>Chosen language and Pro purchase status</td><td>Stored only in your device's secure storage (Android Keystore). Never transmitted to us or anyone else.</td></tr>
+        <tr><td>Pro purchase</td><td>Handled entirely by Google Play. We never see or store your payment information — Google handles that under its own privacy policy.</td></tr>
+        <tr><td>Technical diagnostic data (crashes/failures, and minimal usage events like "a room was created" or "a session reached 2 participants")</td><td>Collected by Firebase Crashlytics (failures) and Aptabase (usage events). Each event automatically includes technical device data (Android/iOS version, app version, system language) — never your alias, room code, audio content, location, or an identifier linking you across sessions. Used only to catch bugs and measure connection stability, never for profiling or advertising.</td></tr>
+      </table>
+
+      <h3><span class="ic">🤝</span> Who we share it with</h3>
+      <p>No one outside your local P2P session, except the technical diagnostic data described above. There are no NODEX servers receiving the content of your communications. Google Play Services handles Nearby connectivity, Google Play handles purchases, and Google (Firebase Crashlytics) and Aptabase receive only the anonymous technical data from the row above — each under their own privacy policy.</p>
+
+      <h3><span class="ic">🔐</span> Security</h3>
+      <p>Every message and audio frame is encrypted (AES-256-GCM) between connected devices.</p>
+
+      <h3><span class="ic">🗄️</span> Retention</h3>
+      <p>Nothing from your session is kept once it ends, except your chosen language and Pro status, both device-local only. Technical diagnostic data (failures, minimal usage events) is retained on Firebase Crashlytics' and Aptabase's side, under their own retention policies — not something we control or store separately.</p>
+
+      <h3><span class="ic">🙋</span> Your rights</h3>
+      <p>Since there are no accounts or servers, there's no data of ours to request or delete — uninstalling the app removes what's stored locally too.</p>
+
+      <h3><span class="ic">🔞</span> Children</h3>
+      <p>NODEX is not directed at children under <strong>16</strong> and does not knowingly collect data from anyone younger. Since the app requires no accounts or personal data, there is no in-app mechanism to verify age beyond this stated restriction.</p>
+
+      <h3><span class="ic">✏️</span> Changes to this policy</h3>
+      <p>Will be reflected by updating this page's date.</p>
+    </section>
+  </div>
+
+
+  </div>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-block').forEach(function (el) {
+      el.classList.toggle('visible', el.getAttribute('data-lang') === lang);
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('nodexLegalLang', lang); } catch (e) {}
+  }
+  function setTab(tab) {
+    document.querySelectorAll('.tab-panel').forEach(function (el) {
+      el.classList.toggle('active-tab', el.getAttribute('data-tab') === tab);
+    });
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tab);
+    });
+    try { localStorage.setItem('nodexLegalTab', tab); } catch (e) {}
+  }
+  (function () {
+    var savedLang = null, savedTab = null;
+    try {
+      savedLang = localStorage.getItem('nodexLegalLang');
+      savedTab = localStorage.getItem('nodexLegalTab');
+    } catch (e) {}
+    if (savedLang === 'en') setLang('en');
+    if (savedTab === 'privacy') setTab('privacy');
+  })();
+</script>
+
+</body>
+</html>
