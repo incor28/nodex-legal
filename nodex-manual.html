@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Uso NODEX</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --bg:#f4f6fb;
+    --surface:#ffffff;
+    --surface-2:#eef1f8;
+    --border:#dbe1ee;
+    --text:#141a2c;
+    --text-2:#4b5670;
+    --text-3:#7c879e;
+    --accent:#0052CC;
+    --accent-2:#2E8BFF;
+    --ok:#178a4c;
+    --trace:#c7d3ea;
+    --radius:18px;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg:#090D16;
+      --surface:#121828;
+      --surface-2:#1B2338;
+      --border:#243252;
+      --text:#F5F7FA;
+      --text-2:#9AA7C2;
+      --text-3:#6b7793;
+      --accent:#2E8BFF;
+      --accent-2:#6AB4FF;
+      --ok:#22C55E;
+      --trace:#243252;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#090D16;
+    --surface:#121828;
+    --surface-2:#1B2338;
+    --border:#243252;
+    --text:#F5F7FA;
+    --text-2:#9AA7C2;
+    --text-3:#6b7793;
+    --accent:#2E8BFF;
+    --accent-2:#6AB4FF;
+    --ok:#22C55E;
+    --trace:#243252;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    padding-inline:20px;
+    padding-block:0 64px;
+  }
+  h1,h2,h3{
+    font-family:"Chakra Petch", "IBM Plex Sans", sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  .wrap{max-width:760px;margin-inline:auto;}
+
+  /* ---------- Header ---------- */
+  header{
+    padding-block:40px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .wordmark{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .wordmark .glyph{
+    width:44px;height:44px;flex:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--accent-2),var(--accent));
+    display:grid;place-items:center;
+  }
+  .wordmark .glyph svg{width:24px;height:24px;}
+  .wordmark .name{
+    font-size:1.7rem;
+    font-weight:700;
+    letter-spacing:0.01em;
+    color:var(--text);
+  }
+  .wordmark .name span{color:var(--accent-2);}
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--text-3);
+  }
+  h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:700;line-height:1.2;}
+  header p{
+    color:var(--text-2);
+    font-size:1rem;
+    line-height:1.55;
+    max-width:60ch;
+    margin:0;
+  }
+  .note{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 14px;
+    font-size:0.85rem;
+    color:var(--text-2);
+    line-height:1.5;
+  }
+  .note svg{flex:none;margin-top:2px;color:var(--accent-2);}
+
+  /* ---------- Promise strip ---------- */
+  .promises{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-block:4px 8px;
+  }
+  .promises div{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px 10px;
+    text-align:center;
+  }
+  .promises strong{
+    display:block;
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--text);
+  }
+  .promises span{
+    display:block;
+    font-size:0.72rem;
+    color:var(--text-3);
+    margin-top:2px;
+  }
+
+  /* ---------- Steps (connection path) ---------- */
+  .path{
+    position:relative;
+    margin-top:24px;
+    padding-left:38px;
+  }
+  .step{
+    position:relative;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:28px;
+    padding-block:36px;
+    border-top:1px solid var(--border);
+  }
+  .step:first-child{border-top:none;}
+  .step .badge{
+    position:absolute;
+    left:-38px;
+    top:40px;
+    width:26px;height:26px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent-2);
+    color:var(--accent-2);
+    font-family:"IBM Plex Mono",monospace;
+    font-size:0.72rem;
+    font-weight:600;
+    display:grid;
+    place-items:center;
+  }
+  .path::before{
+    content:"";
+    position:absolute;
+    left:-25px;
+    top:40px;
+    bottom:40px;
+    width:2px;
+    background:var(--trace);
+  }
+  .shot{
+    justify-self:center;
+    width:100%;
+    max-width:220px;
+  }
+  .shot img{
+    display:block;
+    width:100%;
+    border-radius:16px;
+    border:1px solid var(--border);
+    box-shadow:0 12px 28px -14px rgba(0,20,60,0.35);
+  }
+  .step-body{min-width:0;}
+  .step-title{
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:8px;
+    color:var(--text);
+  }
+  .step-body p{
+    margin:0 0 10px;
+    color:var(--text-2);
+    font-size:0.95rem;
+    line-height:1.6;
+    max-width:52ch;
+  }
+  .step-body p:last-child{margin-bottom:0;}
+  .step-body b{color:var(--text);font-weight:600;}
+  .tag{
+    display:inline-flex;
+    align-items:center;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:0.72rem;
+    letter-spacing:0.03em;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    color:var(--text-2);
+    padding:3px 8px;
+    border-radius:6px;
+    margin:2px 4px 2px 0;
+  }
+
+  /* ---------- Mic mode gallery ---------- */
+  .step--wide{grid-template-columns:1fr;}
+  .step--wide .step-body{grid-column:1/-1;}
+  .mode-gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:14px;
+  }
+  .mode-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .mode-card img{
+    display:block;
+    width:100%;
+    border-radius:9px;
+    border:1px solid var(--border);
+  }
+  .mode-card strong{font-size:0.88rem;color:var(--text);}
+  .mode-card span{font-size:0.8rem;color:var(--text-2);line-height:1.45;}
+
+  /* ---------- Closing ---------- */
+  .closing{
+    margin-top:48px;
+    padding-top:32px;
+    border-top:1px solid var(--border);
+  }
+  .closing h2{font-size:1.2rem;margin-bottom:14px;}
+  .checklist{
+    display:grid;
+    gap:10px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .checklist li{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:0.92rem;
+    color:var(--text-2);
+    line-height:1.5;
+  }
+  .checklist li svg{flex:none;margin-top:3px;color:var(--ok);}
+  .checklist b{color:var(--text);}
+
+  .contact{
+    margin-top:28px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .contact .k{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-3);
+  }
+  .contact .v{font-size:0.98rem;color:var(--text);}
+  .contact a{color:var(--accent-2);text-decoration:none;}
+  .contact a:hover{text-decoration:underline;}
+
+  footer{
+    margin-top:40px;
+    text-align:center;
+    color:var(--text-3);
+    font-size:0.78rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:620px){
+    .path{padding-left:26px;}
+    .step{grid-template-columns:1fr;}
+    .step .badge{left:-26px;width:22px;height:22px;font-size:0.62rem;}
+    .path::before{left:-15px;}
+    .shot{max-width:180px;}
+    .promises{grid-template-columns:1fr;}
+    .mode-gallery{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="wordmark">
+      <div class="glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="18" r="1.6" fill="white" stroke="none"/>
+          <path d="M8.5 14.5a5 5 0 0 1 7 0"/>
+          <path d="M5.5 11.5a9 9 0 0 1 13 0"/>
+        </svg>
+      </div>
+      <div class="name">NODE<span>X</span></div>
+    </div>
+    <p class="eyebrow">Manual de uso · Beta cerrada</p>
+    <h1>Guía rápida para probar NODEX</h1>
+    <p>Esto te lleva del primer arranque a tu primera conversación en ocho pasos. NODEX conecta tu voz directo con otro teléfono cercano — sin internet, sin cuentas, sin servidores de por medio.</p>
+    <div class="note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <span>Estas capturas son de la versión actual de la app. Si en una actualización futura ves algún cambio menor de diseño, el flujo general se mantiene igual.</span>
+    </div>
+    <div class="promises">
+      <div><strong>Sin internet</strong><span>Funciona offline</span></div>
+      <div><strong>Sin servidores</strong><span>Tu voz, directa</span></div>
+      <div><strong>100% P2P</strong><span>Más privacidad</span></div>
+    </div>
+  </header>
+
+  <div class="path">
+
+    <div class="step">
+      <div class="badge">01</div>
+      <div class="shot"><img src="manual/01-instalar.jpg" alt="Pantalla de consentimiento de NODEX"></div>
+      <div class="step-body">
+        <div class="step-title">Instalar y aceptar</div>
+        <p>Al abrir la app por primera vez ves esta pantalla. Como NODEX no tiene servidores ni moderación posible, cada persona es responsable del contenido de sus propias conversaciones de voz.</p>
+        <p>Lee el resumen, marca la casilla y toca <b>Aceptar y continuar</b>.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">02</div>
+      <div class="shot"><img src="manual/02-inicio.jpg" alt="Pantalla principal de NODEX"></div>
+      <div class="step-body">
+        <div class="step-title">Pantalla principal</div>
+        <p>Desde aquí salen los dos caminos de NODEX: <b>Crear sala</b> si vas a armar el grupo, o <b>Unirse a sala</b> si alguien ya creó una y te va a sumar.</p>
+        <p>En este manual seguimos primero el camino de crear una sala; más adelante cubrimos cómo unirse a una ya existente.</p>
+        <p><span class="tag">Crear sala</span><span class="tag">Unirse a sala</span></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">03</div>
+      <div class="shot"><img src="manual/03-crear-sala.jpg" alt="Pantalla de crear sala"></div>
+      <div class="step-body">
+        <div class="step-title">Crear una sala</div>
+        <p>Escribe el nombre con el que te van a ver los demás y toca <b>Crear sala</b>. Tu teléfono pasa a ser el <b>anfitrión</b> — mantén la app abierta mientras el resto se conecta.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">04</div>
+      <div class="shot"><img src="manual/04-compartir-invitacion.jpg" alt="Código QR y código de sala para compartir"></div>
+      <div class="step-body">
+        <div class="step-title">Compartir la invitación</div>
+        <p>Al crear la sala aparece un código QR y un código de 6 dígitos. Ese código de 6 dígitos es solo una <b>confirmación visual</b> de que todos entraron a la sala correcta — no hace falta decirlo en voz alta ni escribirlo en ningún lado.</p>
+        <p>Toca <b>Compartir invitación</b> para enviarla por WhatsApp, SMS o cualquier app, o deja que la otra persona escanee el QR directo desde tu pantalla.</p>
+      </div>
+    </div>
+
+    <div class="step step--wide">
+      <div class="badge">05</div>
+      <div class="step-body">
+        <div class="step-title">Elegir cómo transmites tu voz</div>
+        <p>Con la sala activa, elige el modo de micrófono debajo del código. Los tres son mutuamente excluyentes:</p>
+        <div class="mode-gallery">
+          <div class="mode-card">
+            <img src="manual/05a-modo-ptt.jpg" alt="Modo PTT activo, con un participante hablando">
+            <strong>PTT (mantén presionado)</strong>
+            <span>Transmite solo mientras sostienes el botón <b>Hablar</b>. Es el modo por defecto y el más predecible.</span>
+          </div>
+          <div class="mode-card">
+            <img src="manual/05b-modo-abierto.jpg" alt="Modo Abierto continuo activo">
+            <strong>Abierto</strong>
+            <span>El micrófono queda encendido todo el tiempo, sin tocar nada. Cómodo con las manos ocupadas, pero gasta más batería y transmite todo lo que se escuche cerca.</span>
+          </div>
+          <div class="mode-card">
+            <img src="manual/05c-modo-voz.jpg" alt="Modo Voz VOX activo con control de sensibilidad">
+            <strong>Voz (VOX)</strong>
+            <span>Se activa solo al detectar que hablas. Ajusta la <b>sensibilidad</b> si se dispara de más o de menos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">06</div>
+      <div class="shot"><img src="manual/06-opciones-sesion.jpg" alt="Hoja de opciones de sesión: salida de audio y segundo plano"></div>
+      <div class="step-body">
+        <div class="step-title">Opciones de sesión</div>
+        <p>Toca el ícono de ajustes junto al estado de conexión para abrir <b>Opciones de sesión</b>.</p>
+        <p>Ahí eliges por dónde sale el audio — <b>Auricular</b>, <b>Altavoz</b> o <b>Bluetooth</b> (si tienes un casco o manos libres conectado) — y puedes activar <b>Mantener activo en segundo plano</b> para que la sesión siga funcionando aunque minimices la app. Actívalo con cuidado: consume más batería y Android muestra una notificación fija mientras esté encendido.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">07</div>
+      <div class="shot"><img src="manual/07-unirse-sala.jpg" alt="Pantalla de unirse a sala con QR leído"></div>
+      <div class="step-body">
+        <div class="step-title">Unirse a una sala</div>
+        <p>Desde <b>Unirse a sala</b>, escanea el QR de quien creó la sala o toca <b>Pegar invitación</b> si te la compartieron por otro medio. Escribe tu nombre y toca <b>Unirse a sala</b>.</p>
+        <p>Como es conexión directa (Bluetooth + Wi-Fi Direct), necesitas estar <b>físicamente cerca</b> del anfitrión — no funciona a distancia como una llamada normal.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="badge">08</div>
+      <div class="shot"><img src="manual/08-vista-participante.jpg" alt="Sala vista desde un participante, con el anfitrión marcado como HOST"></div>
+      <div class="step-body">
+        <div class="step-title">Vista como participante</div>
+        <p>Así se ve la sala para quien se une (no para el anfitrión): el nombre de quien creó la sala aparece marcado con <b>HOST</b>, y cada participante muestra un indicador visual cuando está hablando.</p>
+        <p>Puedes salir de la sala en cualquier momento con el ícono de salida arriba a la derecha.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="closing">
+    <h2>Antes de reportar algo</h2>
+    <ul class="checklist">
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span><b>No hace falta internet ni datos</b> — pero sí que ambos teléfonos estén físicamente cerca y con Bluetooth/Wi-Fi activados.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>El plan gratuito permite <b>hasta 2 personas por sala</b>.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Si el audio se corta o no conecta, prueba <b>acercar más los teléfonos</b> antes de asumir que es un bug.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Cualquier falla, captura de pantalla o comentario — mándalo, así lo corregimos antes del lanzamiento.</span></li>
+    </ul>
+
+    <div class="contact">
+      <span class="k">Reportar / feedback</span>
+      <span class="v"><a href="mailto:nodex.dev.mobile+soporte@gmail.com">nodex.dev.mobile+soporte@gmail.com</a></span>
+    </div>
+  </div>
+
+  <footer>Gracias por ser parte de la beta de NODEX.</footer>
+
+</div>
+</body>
+</html>
