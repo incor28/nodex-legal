@@ -72,6 +72,13 @@
     flex-direction:column;
     gap:14px;
   }
+  .wordmark-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+  }
   .wordmark{
     display:flex;
     align-items:center;
@@ -91,6 +98,42 @@
     color:var(--text);
   }
   .wordmark .name span{color:var(--accent-2);}
+  .lang-switch{
+    display:flex;
+    align-items:center;
+    gap:2px;
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:3px;
+    flex:none;
+  }
+  .lang-switch svg{
+    color:var(--text-3);
+    margin-left:6px;
+    margin-right:2px;
+    flex:none;
+  }
+  .lang-btn{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    color:var(--text-3);
+    background:transparent;
+    border:none;
+    padding:5px 11px;
+    border-radius:999px;
+    cursor:pointer;
+  }
+  .lang-btn.active{
+    background:var(--accent-2);
+    color:var(--surface);
+  }
+  .lang-btn:focus-visible{
+    outline:2px solid var(--accent-2);
+    outline-offset:2px;
+  }
   .eyebrow{
     font-family:"IBM Plex Mono", ui-monospace, monospace;
     font-size:0.72rem;
@@ -324,27 +367,34 @@
 <div class="wrap">
 
   <header>
-    <div class="wordmark">
-      <div class="glyph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
-          <circle cx="12" cy="18" r="1.6" fill="white" stroke="none"/>
-          <path d="M8.5 14.5a5 5 0 0 1 7 0"/>
-          <path d="M5.5 11.5a9 9 0 0 1 13 0"/>
-        </svg>
+    <div class="wordmark-row">
+      <div class="wordmark">
+        <div class="glyph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="18" r="1.6" fill="white" stroke="none"/>
+            <path d="M8.5 14.5a5 5 0 0 1 7 0"/>
+            <path d="M5.5 11.5a9 9 0 0 1 13 0"/>
+          </svg>
+        </div>
+        <div class="name">NODE<span>X</span></div>
       </div>
-      <div class="name">NODE<span>X</span></div>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
+        <button type="button" class="lang-btn" data-lang-btn="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+      </div>
     </div>
-    <p class="eyebrow">Manual de uso · Beta cerrada</p>
-    <h1>Guía rápida para probar NODEX</h1>
-    <p>Esto te lleva del primer arranque a tu primera conversación en ocho pasos. NODEX conecta tu voz directo con otro teléfono cercano — sin internet, sin cuentas, sin servidores de por medio.</p>
+    <p class="eyebrow" data-i18n="eyebrow">Manual de uso · Beta cerrada</p>
+    <h1 data-i18n="h1">Guía rápida para probar NODEX</h1>
+    <p data-i18n="intro">Esto te lleva del primer arranque a tu primera conversación en ocho pasos. NODEX conecta tu voz directo con otro teléfono cercano — sin internet, sin cuentas, sin servidores de por medio.</p>
     <div class="note">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
-      <span>Estas capturas son de la versión actual de la app. Si en una actualización futura ves algún cambio menor de diseño, el flujo general se mantiene igual.</span>
+      <span data-i18n="note">Estas capturas son de la versión actual de la app. Si en una actualización futura ves algún cambio menor de diseño, el flujo general se mantiene igual.</span>
     </div>
     <div class="promises">
-      <div><strong>Sin internet</strong><span>Funciona offline</span></div>
-      <div><strong>Sin servidores</strong><span>Tu voz, directa</span></div>
-      <div><strong>100% P2P</strong><span>Más privacidad</span></div>
+      <div><strong data-i18n="promise1Title">Sin internet</strong><span data-i18n="promise1Sub">Funciona offline</span></div>
+      <div><strong data-i18n="promise2Title">Sin servidores</strong><span data-i18n="promise2Sub">Tu voz, directa</span></div>
+      <div><strong data-i18n="promise3Title">100% P2P</strong><span data-i18n="promise3Sub">Más privacidad</span></div>
     </div>
   </header>
 
@@ -352,64 +402,64 @@
 
     <div class="step">
       <div class="badge">01</div>
-      <div class="shot"><img src="manual/01-instalar.jpg" alt="Pantalla de consentimiento de NODEX"></div>
+      <div class="shot"><img src="manual/01-instalar.jpg" data-i18n-alt="alt01" alt="Pantalla de consentimiento de NODEX"></div>
       <div class="step-body">
-        <div class="step-title">Instalar y aceptar</div>
-        <p>Al abrir la app por primera vez ves esta pantalla. Como NODEX no tiene servidores ni moderación posible, cada persona es responsable del contenido de sus propias conversaciones de voz.</p>
-        <p>Lee el resumen, marca la casilla y toca <b>Aceptar y continuar</b>.</p>
+        <div class="step-title" data-i18n="step01Title">Instalar y aceptar</div>
+        <p data-i18n="step01P1">Al abrir la app por primera vez ves esta pantalla. Como NODEX no tiene servidores ni moderación posible, cada persona es responsable del contenido de sus propias conversaciones de voz.</p>
+        <p data-i18n="step01P2">Lee el resumen, marca la casilla y toca <b>Aceptar y continuar</b>.</p>
       </div>
     </div>
 
     <div class="step">
       <div class="badge">02</div>
-      <div class="shot"><img src="manual/02-inicio.jpg" alt="Pantalla principal de NODEX"></div>
+      <div class="shot"><img src="manual/02-inicio.jpg" data-i18n-alt="alt02" alt="Pantalla principal de NODEX"></div>
       <div class="step-body">
-        <div class="step-title">Pantalla principal</div>
-        <p>Desde aquí salen los dos caminos de NODEX: <b>Crear sala</b> si vas a armar el grupo, o <b>Unirse a sala</b> si alguien ya creó una y te va a sumar.</p>
-        <p>En este manual seguimos primero el camino de crear una sala; más adelante cubrimos cómo unirse a una ya existente.</p>
-        <p><span class="tag">Crear sala</span><span class="tag">Unirse a sala</span></p>
+        <div class="step-title" data-i18n="step02Title">Pantalla principal</div>
+        <p data-i18n="step02P1">Desde aquí salen los dos caminos de NODEX: <b>Crear sala</b> si vas a armar el grupo, o <b>Unirse a sala</b> si alguien ya creó una y te va a sumar.</p>
+        <p data-i18n="step02P2">En este manual seguimos primero el camino de crear una sala; más adelante cubrimos cómo unirse a una ya existente.</p>
+        <p><span class="tag" data-i18n="tagCreate">Crear sala</span><span class="tag" data-i18n="tagJoin">Unirse a sala</span></p>
       </div>
     </div>
 
     <div class="step">
       <div class="badge">03</div>
-      <div class="shot"><img src="manual/03-crear-sala.jpg" alt="Pantalla de crear sala"></div>
+      <div class="shot"><img src="manual/03-crear-sala.jpg" data-i18n-alt="alt03" alt="Pantalla de crear sala"></div>
       <div class="step-body">
-        <div class="step-title">Crear una sala</div>
-        <p>Escribe el nombre con el que te van a ver los demás y toca <b>Crear sala</b>. Tu teléfono pasa a ser el <b>anfitrión</b> — mantén la app abierta mientras el resto se conecta.</p>
+        <div class="step-title" data-i18n="step03Title">Crear una sala</div>
+        <p data-i18n="step03P1">Escribe el nombre con el que te van a ver los demás y toca <b>Crear sala</b>. Tu teléfono pasa a ser el <b>anfitrión</b> — mantén la app abierta mientras el resto se conecta.</p>
       </div>
     </div>
 
     <div class="step">
       <div class="badge">04</div>
-      <div class="shot"><img src="manual/04-compartir-invitacion.jpg" alt="Código QR y código de sala para compartir"></div>
+      <div class="shot"><img src="manual/04-compartir-invitacion.jpg" data-i18n-alt="alt04" alt="Código QR y código de sala para compartir"></div>
       <div class="step-body">
-        <div class="step-title">Compartir la invitación</div>
-        <p>Al crear la sala aparece un código QR y un código de 6 dígitos. Ese código de 6 dígitos es solo una <b>confirmación visual</b> de que todos entraron a la sala correcta — no hace falta decirlo en voz alta ni escribirlo en ningún lado.</p>
-        <p>Toca <b>Compartir invitación</b> para enviarla por WhatsApp, SMS o cualquier app, o deja que la otra persona escanee el QR directo desde tu pantalla.</p>
+        <div class="step-title" data-i18n="step04Title">Compartir la invitación</div>
+        <p data-i18n="step04P1">Al crear la sala aparece un código QR y un código de 6 dígitos. Ese código de 6 dígitos es solo una <b>confirmación visual</b> de que todos entraron a la sala correcta — no hace falta decirlo en voz alta ni escribirlo en ningún lado.</p>
+        <p data-i18n="step04P2">Toca <b>Compartir invitación</b> para enviarla por WhatsApp, SMS o cualquier app, o deja que la otra persona escanee el QR directo desde tu pantalla.</p>
       </div>
     </div>
 
     <div class="step step--wide">
       <div class="badge">05</div>
       <div class="step-body">
-        <div class="step-title">Elegir cómo transmites tu voz</div>
-        <p>Con la sala activa, elige el modo de micrófono debajo del código. Los tres son mutuamente excluyentes:</p>
+        <div class="step-title" data-i18n="step05Title">Elegir cómo transmites tu voz</div>
+        <p data-i18n="step05P1">Con la sala activa, elige el modo de micrófono debajo del código. Los tres son mutuamente excluyentes:</p>
         <div class="mode-gallery">
           <div class="mode-card">
-            <img src="manual/05a-modo-ptt.jpg" alt="Modo PTT activo, con un participante hablando">
-            <strong>PTT (mantén presionado)</strong>
-            <span>Transmite solo mientras sostienes el botón <b>Hablar</b>. Es el modo por defecto y el más predecible.</span>
+            <img src="manual/05a-modo-ptt.jpg" data-i18n-alt="altPtt" alt="Modo PTT activo, con un participante hablando">
+            <strong data-i18n="modePttTitle">PTT (mantén presionado)</strong>
+            <span data-i18n="modePttBody">Transmite solo mientras sostienes el botón <b>Hablar</b>. Es el modo por defecto y el más predecible.</span>
           </div>
           <div class="mode-card">
-            <img src="manual/05b-modo-abierto.jpg" alt="Modo Abierto continuo activo">
-            <strong>Abierto</strong>
-            <span>El micrófono queda encendido todo el tiempo, sin tocar nada. Cómodo con las manos ocupadas, pero gasta más batería y transmite todo lo que se escuche cerca.</span>
+            <img src="manual/05b-modo-abierto.jpg" data-i18n-alt="altAbierto" alt="Modo Abierto continuo activo">
+            <strong data-i18n="modeAbiertoTitle">Abierto</strong>
+            <span data-i18n="modeAbiertoBody">El micrófono queda encendido todo el tiempo, sin tocar nada. Cómodo con las manos ocupadas, pero gasta más batería y transmite todo lo que se escuche cerca.</span>
           </div>
           <div class="mode-card">
-            <img src="manual/05c-modo-voz.jpg" alt="Modo Voz VOX activo con control de sensibilidad">
-            <strong>Voz (VOX)</strong>
-            <span>Se activa solo al detectar que hablas. Ajusta la <b>sensibilidad</b> si se dispara de más o de menos.</span>
+            <img src="manual/05c-modo-voz.jpg" data-i18n-alt="altVoz" alt="Modo Voz VOX activo con control de sensibilidad">
+            <strong data-i18n="modeVozTitle">Voz (VOX)</strong>
+            <span data-i18n="modeVozBody">Se activa solo al detectar que hablas. Ajusta la <b>sensibilidad</b> si se dispara de más o de menos.</span>
           </div>
         </div>
       </div>
@@ -417,53 +467,207 @@
 
     <div class="step">
       <div class="badge">06</div>
-      <div class="shot"><img src="manual/06-opciones-sesion.jpg" alt="Hoja de opciones de sesión: salida de audio y segundo plano"></div>
+      <div class="shot"><img src="manual/06-opciones-sesion.jpg" data-i18n-alt="alt06" alt="Hoja de opciones de sesión: salida de audio y segundo plano"></div>
       <div class="step-body">
-        <div class="step-title">Opciones de sesión</div>
-        <p>Toca el ícono de ajustes junto al estado de conexión para abrir <b>Opciones de sesión</b>.</p>
-        <p>Ahí eliges por dónde sale el audio — <b>Auricular</b>, <b>Altavoz</b> o <b>Bluetooth</b> (si tienes un casco o manos libres conectado) — y puedes activar <b>Mantener activo en segundo plano</b> para que la sesión siga funcionando aunque minimices la app. Actívalo con cuidado: consume más batería y Android muestra una notificación fija mientras esté encendido.</p>
+        <div class="step-title" data-i18n="step06Title">Opciones de sesión</div>
+        <p data-i18n="step06P1">Toca el ícono de ajustes junto al estado de conexión para abrir <b>Opciones de sesión</b>.</p>
+        <p data-i18n="step06P2">Ahí eliges por dónde sale el audio — <b>Auricular</b>, <b>Altavoz</b> o <b>Bluetooth</b> (si tienes un casco o manos libres conectado) — y puedes activar <b>Mantener activo en segundo plano</b> para que la sesión siga funcionando aunque minimices la app. Actívalo con cuidado: consume más batería y Android muestra una notificación fija mientras esté encendido.</p>
       </div>
     </div>
 
     <div class="step">
       <div class="badge">07</div>
-      <div class="shot"><img src="manual/07-unirse-sala.jpg" alt="Pantalla de unirse a sala con QR leído"></div>
+      <div class="shot"><img src="manual/07-unirse-sala.jpg" data-i18n-alt="alt07" alt="Pantalla de unirse a sala con QR leído"></div>
       <div class="step-body">
-        <div class="step-title">Unirse a una sala</div>
-        <p>Desde <b>Unirse a sala</b>, escanea el QR de quien creó la sala o toca <b>Pegar invitación</b> si te la compartieron por otro medio. Escribe tu nombre y toca <b>Unirse a sala</b>.</p>
-        <p>Como es conexión directa (Bluetooth + Wi-Fi Direct), necesitas estar <b>físicamente cerca</b> del anfitrión — no funciona a distancia como una llamada normal.</p>
+        <div class="step-title" data-i18n="step07Title">Unirse a una sala</div>
+        <p data-i18n="step07P1">Desde <b>Unirse a sala</b>, escanea el QR de quien creó la sala o toca <b>Pegar invitación</b> si te la compartieron por otro medio. Escribe tu nombre y toca <b>Unirse a sala</b>.</p>
+        <p data-i18n="step07P2">Como es conexión directa (Bluetooth + Wi-Fi Direct), necesitas estar <b>físicamente cerca</b> del anfitrión — no funciona a distancia como una llamada normal.</p>
       </div>
     </div>
 
     <div class="step">
       <div class="badge">08</div>
-      <div class="shot"><img src="manual/08-vista-participante.jpg" alt="Sala vista desde un participante, con el anfitrión marcado como HOST"></div>
+      <div class="shot"><img src="manual/08-vista-participante.jpg" data-i18n-alt="alt08" alt="Sala vista desde un participante, con el anfitrión marcado como HOST"></div>
       <div class="step-body">
-        <div class="step-title">Vista como participante</div>
-        <p>Así se ve la sala para quien se une (no para el anfitrión): el nombre de quien creó la sala aparece marcado con <b>HOST</b>, y cada participante muestra un indicador visual cuando está hablando.</p>
-        <p>Puedes salir de la sala en cualquier momento con el ícono de salida arriba a la derecha.</p>
+        <div class="step-title" data-i18n="step08Title">Vista como participante</div>
+        <p data-i18n="step08P1">Así se ve la sala para quien se une (no para el anfitrión): el nombre de quien creó la sala aparece marcado con <b>HOST</b>, y cada participante muestra un indicador visual cuando está hablando.</p>
+        <p data-i18n="step08P2">Puedes salir de la sala en cualquier momento con el ícono de salida arriba a la derecha.</p>
       </div>
     </div>
 
   </div>
 
   <div class="closing">
-    <h2>Antes de reportar algo</h2>
+    <h2 data-i18n="closingTitle">Antes de reportar algo</h2>
     <ul class="checklist">
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span><b>No hace falta internet ni datos</b> — pero sí que ambos teléfonos estén físicamente cerca y con Bluetooth/Wi-Fi activados.</span></li>
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Te permite <b>hasta 2 personas por sala</b>.</span></li>
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Si el audio se corta o no conecta, prueba <b>acercar más los teléfonos</b> antes de asumir que es un bug.</span></li>
-      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Cualquier falla, captura de pantalla o comentario — mándalo, así lo corregimos antes del lanzamiento.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="check1"><b>No hace falta internet ni datos</b> — pero sí que ambos teléfonos estén físicamente cerca y con Bluetooth/Wi-Fi activados.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="check2">Te permite <b>hasta 2 personas por sala</b>.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="check3">Si el audio se corta o no conecta, prueba <b>acercar más los teléfonos</b> antes de asumir que es un bug.</span></li>
+      <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="check4">Cualquier falla, captura de pantalla o comentario — mándalo, así lo corregimos antes del lanzamiento.</span></li>
     </ul>
 
     <div class="contact">
-      <span class="k">Reportar / feedback</span>
+      <span class="k" data-i18n="contactLabel">Reportar / feedback</span>
       <span class="v"><a href="mailto:nodex.dev.mobile+soporte@gmail.com">nodex.dev.mobile+soporte@gmail.com</a></span>
     </div>
   </div>
 
-  <footer>Gracias por ser parte de la beta de NODEX.</footer>
+  <footer data-i18n="footer">Gracias por ser parte de la beta de NODEX.</footer>
 
 </div>
+
+<script>
+(function(){
+  var STRINGS = {
+    es: {
+      pageTitle: "Manual de Uso NODEX",
+      eyebrow: "Manual de uso · Beta cerrada",
+      h1: "Guía rápida para probar NODEX",
+      intro: "Esto te lleva del primer arranque a tu primera conversación en ocho pasos. NODEX conecta tu voz directo con otro teléfono cercano — sin internet, sin cuentas, sin servidores de por medio.",
+      note: "Estas capturas son de la versión actual de la app. Si en una actualización futura ves algún cambio menor de diseño, el flujo general se mantiene igual.",
+      promise1Title: "Sin internet", promise1Sub: "Funciona offline",
+      promise2Title: "Sin servidores", promise2Sub: "Tu voz, directa",
+      promise3Title: "100% P2P", promise3Sub: "Más privacidad",
+      alt01: "Pantalla de consentimiento de NODEX",
+      step01Title: "Instalar y aceptar",
+      step01P1: "Al abrir la app por primera vez ves esta pantalla. Como NODEX no tiene servidores ni moderación posible, cada persona es responsable del contenido de sus propias conversaciones de voz.",
+      step01P2: "Lee el resumen, marca la casilla y toca <b>Aceptar y continuar</b>.",
+      alt02: "Pantalla principal de NODEX",
+      step02Title: "Pantalla principal",
+      step02P1: "Desde aquí salen los dos caminos de NODEX: <b>Crear sala</b> si vas a armar el grupo, o <b>Unirse a sala</b> si alguien ya creó una y te va a sumar.",
+      step02P2: "En este manual seguimos primero el camino de crear una sala; más adelante cubrimos cómo unirse a una ya existente.",
+      tagCreate: "Crear sala", tagJoin: "Unirse a sala",
+      alt03: "Pantalla de crear sala",
+      step03Title: "Crear una sala",
+      step03P1: "Escribe el nombre con el que te van a ver los demás y toca <b>Crear sala</b>. Tu teléfono pasa a ser el <b>anfitrión</b> — mantén la app abierta mientras el resto se conecta.",
+      alt04: "Código QR y código de sala para compartir",
+      step04Title: "Compartir la invitación",
+      step04P1: "Al crear la sala aparece un código QR y un código de 6 dígitos. Ese código de 6 dígitos es solo una <b>confirmación visual</b> de que todos entraron a la sala correcta — no hace falta decirlo en voz alta ni escribirlo en ningún lado.",
+      step04P2: "Toca <b>Compartir invitación</b> para enviarla por WhatsApp, SMS o cualquier app, o deja que la otra persona escanee el QR directo desde tu pantalla.",
+      step05Title: "Elegir cómo transmites tu voz",
+      step05P1: "Con la sala activa, elige el modo de micrófono debajo del código. Los tres son mutuamente excluyentes:",
+      altPtt: "Modo PTT activo, con un participante hablando",
+      modePttTitle: "PTT (mantén presionado)",
+      modePttBody: "Transmite solo mientras sostienes el botón <b>Hablar</b>. Es el modo por defecto y el más predecible.",
+      altAbierto: "Modo Abierto continuo activo",
+      modeAbiertoTitle: "Abierto",
+      modeAbiertoBody: "El micrófono queda encendido todo el tiempo, sin tocar nada. Cómodo con las manos ocupadas, pero gasta más batería y transmite todo lo que se escuche cerca.",
+      altVoz: "Modo Voz VOX activo con control de sensibilidad",
+      modeVozTitle: "Voz (VOX)",
+      modeVozBody: "Se activa solo al detectar que hablas. Ajusta la <b>sensibilidad</b> si se dispara de más o de menos.",
+      alt06: "Hoja de opciones de sesión: salida de audio y segundo plano",
+      step06Title: "Opciones de sesión",
+      step06P1: "Toca el ícono de ajustes junto al estado de conexión para abrir <b>Opciones de sesión</b>.",
+      step06P2: "Ahí eliges por dónde sale el audio — <b>Auricular</b>, <b>Altavoz</b> o <b>Bluetooth</b> (si tienes un casco o manos libres conectado) — y puedes activar <b>Mantener activo en segundo plano</b> para que la sesión siga funcionando aunque minimices la app. Actívalo con cuidado: consume más batería y Android muestra una notificación fija mientras esté encendido.",
+      alt07: "Pantalla de unirse a sala con QR leído",
+      step07Title: "Unirse a una sala",
+      step07P1: "Desde <b>Unirse a sala</b>, escanea el QR de quien creó la sala o toca <b>Pegar invitación</b> si te la compartieron por otro medio. Escribe tu nombre y toca <b>Unirse a sala</b>.",
+      step07P2: "Como es conexión directa (Bluetooth + Wi-Fi Direct), necesitas estar <b>físicamente cerca</b> del anfitrión — no funciona a distancia como una llamada normal.",
+      alt08: "Sala vista desde un participante, con el anfitrión marcado como HOST",
+      step08Title: "Vista como participante",
+      step08P1: "Así se ve la sala para quien se une (no para el anfitrión): el nombre de quien creó la sala aparece marcado con <b>HOST</b>, y cada participante muestra un indicador visual cuando está hablando.",
+      step08P2: "Puedes salir de la sala en cualquier momento con el ícono de salida arriba a la derecha.",
+      closingTitle: "Antes de reportar algo",
+      check1: "<b>No hace falta internet ni datos</b> — pero sí que ambos teléfonos estén físicamente cerca y con Bluetooth/Wi-Fi activados.",
+      check2: "Te permite <b>hasta 2 personas por sala</b>.",
+      check3: "Si el audio se corta o no conecta, prueba <b>acercar más los teléfonos</b> antes de asumir que es un bug.",
+      check4: "Cualquier falla, captura de pantalla o comentario — mándalo, así lo corregimos antes del lanzamiento.",
+      contactLabel: "Reportar / feedback",
+      footer: "Gracias por ser parte de la beta de NODEX."
+    },
+    en: {
+      pageTitle: "NODEX User Manual",
+      eyebrow: "User manual · Closed beta",
+      h1: "Quick guide to trying NODEX",
+      intro: "This takes you from first launch to your first conversation in eight steps. NODEX connects your voice directly to another nearby phone — no internet, no accounts, no servers in between.",
+      note: "These screenshots are from the current version of the app. If a future update brings minor design changes, the overall flow stays the same.",
+      promise1Title: "No internet", promise1Sub: "Works offline",
+      promise2Title: "No servers", promise2Sub: "Your voice, direct",
+      promise3Title: "100% P2P", promise3Sub: "More privacy",
+      alt01: "NODEX consent screen",
+      step01Title: "Install and accept",
+      step01P1: "The first time you open the app, you'll see this screen. Since NODEX has no servers or possible moderation, each person is responsible for the content of their own voice conversations.",
+      step01P2: "Read the summary, check the box, and tap <b>Accept and continue</b>.",
+      alt02: "NODEX home screen",
+      step02Title: "Home screen",
+      step02P1: "This is where NODEX's two paths start: <b>Create room</b> if you're setting up the group, or <b>Join room</b> if someone already created one and is adding you.",
+      step02P2: "This manual follows the create-a-room path first; joining an existing one is covered further down.",
+      tagCreate: "Create room", tagJoin: "Join room",
+      alt03: "Create room screen",
+      step03Title: "Create a room",
+      step03P1: "Type the name others will see you by and tap <b>Create room</b>. Your phone becomes the <b>host</b> — keep the app open while everyone else connects.",
+      alt04: "QR code and room code to share",
+      step04Title: "Share the invitation",
+      step04P1: "Creating the room shows a QR code and a 6-digit code. That 6-digit code is just a <b>visual confirmation</b> that everyone joined the right room — no need to say it out loud or write it anywhere.",
+      step04P2: "Tap <b>Share invitation</b> to send it via WhatsApp, SMS, or any app, or let the other person scan the QR straight from your screen.",
+      step05Title: "Choose how you transmit your voice",
+      step05P1: "With the room active, choose the microphone mode below the code. All three are mutually exclusive:",
+      altPtt: "PTT mode active, with a participant speaking",
+      modePttTitle: "PTT (press and hold)",
+      modePttBody: "Transmits only while you hold down the <b>Talk</b> button. It's the default mode and the most predictable.",
+      altAbierto: "Continuous Open mode active",
+      modeAbiertoTitle: "Open",
+      modeAbiertoBody: "The microphone stays on all the time, no need to touch anything. Convenient when your hands are busy, but it uses more battery and transmits everything heard nearby.",
+      altVoz: "Voice (VOX) mode active with sensitivity control",
+      modeVozTitle: "Voice (VOX)",
+      modeVozBody: "Activates only when it detects you speaking. Adjust the <b>sensitivity</b> if it triggers too much or too little.",
+      alt06: "Session options sheet: audio output and background mode",
+      step06Title: "Session options",
+      step06P1: "Tap the settings icon next to the connection status to open <b>Session options</b>.",
+      step06P2: "There you choose where audio comes out — <b>Earpiece</b>, <b>Speaker</b>, or <b>Bluetooth</b> (if you have a headset or hands-free connected) — and you can turn on <b>Keep active in background</b> so the session keeps working even if you minimize the app. Turn it on carefully: it uses more battery and Android shows a persistent notification while it's on.",
+      alt07: "Join room screen with QR scanned",
+      step07Title: "Join a room",
+      step07P1: "From <b>Join room</b>, scan the QR of whoever created the room or tap <b>Paste invitation</b> if it was shared with you another way. Type your name and tap <b>Join room</b>.",
+      step07P2: "Since it's a direct connection (Bluetooth + Wi-Fi Direct), you need to be <b>physically close</b> to the host — it doesn't work remotely like a regular call.",
+      alt08: "Room view from a participant, with the host marked as HOST",
+      step08Title: "Participant view",
+      step08P1: "This is what the room looks like for someone joining (not the host): the name of whoever created the room shows a <b>HOST</b> badge, and each participant shows a visual indicator when they're speaking.",
+      step08P2: "You can leave the room at any time with the exit icon in the top right.",
+      closingTitle: "Before reporting something",
+      check1: "<b>No internet or mobile data needed</b> — but both phones do need to be physically close with Bluetooth/Wi-Fi turned on.",
+      check2: "Allows <b>up to 2 people per room</b>.",
+      check3: "If audio cuts out or won't connect, try <b>moving the phones closer</b> before assuming it's a bug.",
+      check4: "Any glitch, screenshot, or comment — send it over, so we can fix it before launch.",
+      contactLabel: "Report / feedback",
+      footer: "Thanks for being part of the NODEX beta."
+    }
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.title = STRINGS[lang].pageTitle;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if (STRINGS[lang][key] !== undefined) el.innerHTML = STRINGS[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-alt');
+      if (STRINGS[lang][key] !== undefined) el.setAttribute('alt', STRINGS[lang][key]);
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      var isActive = btn.getAttribute('data-lang-btn') === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+    try { localStorage.setItem('nodexManualLang', lang); } catch (e) {}
+  }
+
+  function initLang(){
+    var saved = null;
+    try { saved = localStorage.getItem('nodexManualLang'); } catch (e) {}
+    var lang = saved;
+    if (lang !== 'es' && lang !== 'en') {
+      lang = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+    }
+    applyLang(lang);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
+  });
+
+  initLang();
+})();
+</script>
 </body>
 </html>

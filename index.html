@@ -4,18 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NODEX — Términos de Uso y Política de Privacidad</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
   :root {
-    --bg: #eef2f6;
+    --bg: #f4f6fb;
     --surface: #ffffff;
-    --surface-soft: #f7f9fb;
-    --border: #e1e7ee;
-    --text: #23303c;
-    --text-secondary: #5b6b7c;
-    --accent: #0e7c9e;
-    --accent-soft: #e6f4f8;
+    --surface-soft: #eef1f8;
+    --border: #dbe1ee;
+    --text: #141a2c;
+    --text-secondary: #4b5670;
+    --accent: #0052CC;
+    --accent-soft: #e8f1ff;
     --pending: #92400e;
     --pending-bg: #fef1dc;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg: #090D16;
+      --surface: #121828;
+      --surface-soft: #1B2338;
+      --border: #243252;
+      --text: #F5F7FA;
+      --text-secondary: #9AA7C2;
+      --accent: #6AB4FF;
+      --accent-soft: #16233d;
+      --pending: #FCD34D;
+      --pending-bg: #3B2F14;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #090D16;
+    --surface: #121828;
+    --surface-soft: #1B2338;
+    --border: #243252;
+    --text: #F5F7FA;
+    --text-secondary: #9AA7C2;
+    --accent: #6AB4FF;
+    --accent-soft: #16233d;
+    --pending: #FCD34D;
+    --pending-bg: #3B2F14;
   }
   * { box-sizing: border-box; }
   body {
@@ -23,10 +50,12 @@
     padding: 0 16px;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
     line-height: 1.7;
     font-size: 16px;
   }
+  h1, h2, h3 { font-family: "Chakra Petch", "IBM Plex Sans", sans-serif; }
+  .meta, code { font-family: "IBM Plex Mono", ui-monospace, monospace; }
   .wrap {
     max-width: 780px;
     margin: 0 auto;
@@ -51,7 +80,7 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(20, 30, 40, 0.25);
+    box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.35);
     display: block;
   }
   h1 {
@@ -66,22 +95,32 @@
   }
   .lang-switch {
     display: inline-flex;
+    gap: 2px;
+    background: var(--surface-soft);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 999px;
+    padding: 3px;
   }
   .lang-switch button {
-    background: var(--surface-soft);
+    background: transparent;
     color: var(--text-secondary);
     border: none;
-    padding: 7px 16px;
-    font-size: 0.88rem;
+    padding: 6px 14px;
+    font-size: 0.82rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 999px;
     cursor: pointer;
   }
   .lang-switch button.active {
     background: var(--accent);
-    color: #ffffff;
-    font-weight: 600;
+    color: var(--surface);
+  }
+  .lang-switch button:focus-visible,
+  .doc-tabs button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 .doc-tabs {
     display: flex;
@@ -116,7 +155,9 @@
     border-bottom-color: var(--accent);
     background: var(--accent-soft);
   }
-  .doc-tabs .ic { font-size: 1.05em; }
+  .ic { display: inline-flex; align-items: center; color: var(--accent); flex: none; }
+  .ic svg { display: block; width: 16px; height: 16px; }
+  h2 .ic svg, .doc-tabs .ic svg { width: 18px; height: 18px; }
   .tab-panel { display: none; }
   .tab-panel.active-tab { display: block; }
   section {
@@ -220,8 +261,8 @@
     </div>
     <p class="tagline">Node-to-Node Exchange — Your devices are the network.</p>
     <div class="lang-switch">
-      <button type="button" data-lang="es" class="active" onclick="setLang('es')">🇪🇸 Español</button>
-      <button type="button" data-lang="en" onclick="setLang('en')">🇬🇧 English</button>
+      <button type="button" data-lang="es" class="active" onclick="setLang('es')">Español</button>
+      <button type="button" data-lang="en" onclick="setLang('en')">English</button>
     </div>
   </header>
 
@@ -229,21 +270,21 @@
   <div class="lang-block visible" data-lang="es">
 
     <div class="doc-tabs">
-      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic">📜</span> Términos de Uso</button>
-      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic">🔒</span> Política de Privacidad</button>
+      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> Términos de Uso</button>
+      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Política de Privacidad</button>
     </div>
 
     <section id="terminos-es" class="tab-panel active-tab" data-tab="terms">
-      <h2><span class="ic">📜</span> Términos de Uso y Responsabilidad</h2>
+      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> Términos de Uso y Responsabilidad</h2>
       <p class="meta">Última actualización: 15 de septiembre de 2026 · Contacto: nodex.dev.mobile@gmail.com</p>
 
-      <h3><span class="ic">✅</span> 1. Aceptación de los términos</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></span> 1. Aceptación de los términos</h3>
       <p>Al instalar o usar NODEX, aceptas estos términos. Si no estás de acuerdo, no uses la aplicación.</p>
 
-      <h3><span class="ic">ℹ️</span> 2. Qué es NODEX y qué no es</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span> 2. Qué es NODEX y qué no es</h3>
       <p>NODEX es una herramienta de comunicación de voz punto a punto (P2P) diseñada para conectar dispositivos cercanos directamente entre sí mediante Bluetooth/Wi-Fi Direct, sin que el contenido de audio sea enviado a servidores propios de NODEX. <strong>NODEX no está diseñado para monitorear, moderar, grabar ni almacenar el contenido de las comunicaciones de voz.</strong> El funcionamiento puede depender de servicios del sistema operativo y de terceros necesarios para conectividad, compras, diagnóstico y estabilidad, según se explica en la Política de Privacidad.</p>
 
-      <h3><span class="ic">🚫</span> 3. Uso permitido y responsabilidad del usuario</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.5 18.5l13-13"/></svg></span> 3. Uso permitido y responsabilidad del usuario</h3>
       <p>Aceptas usar NODEX únicamente de forma legal y respetuosa. Específicamente, aceptas que <strong>no usarás NODEX para</strong>:</p>
       <ul>
         <li>Acosar, amenazar, intimidar o dañar a otra persona.</li>
@@ -253,57 +294,57 @@
       </ul>
       <p><strong>Eres el único responsable del contenido de tus comunicaciones de voz y de las sesiones que crees o a las que te unas.</strong> Como se explica en el punto 2, no podemos revisar, moderar ni eliminar contenido de una conversación en curso — es tu responsabilidad, igual que con cualquier walkie-talkie físico o llamada telefónica.</p>
 
-      <h3><span class="ic">🏍️</span> 4. Seguridad al usar NODEX en movimiento</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L21 20H3L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></span> 4. Seguridad al usar NODEX en movimiento</h3>
       <p>NODEX puede utilizarse como herramienta de comunicación durante desplazamientos y actividades en movimiento. <strong>No debes manipular manualmente el dispositivo cuando hacerlo pueda distraerte de la conducción o comprometer tu seguridad.</strong> Se recomienda configurar la sesión y los controles necesarios antes de iniciar la marcha y utilizar sistemas manos libres compatibles cuando corresponda. Eres responsable de operar cualquier vehículo de forma segura y de cumplir las leyes de tránsito aplicables en tu país.</p>
 
-      <h3><span class="ic">⚠️</span> 5. Sin garantías</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L21 20H3L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></span> 5. Sin garantías</h3>
       <p>NODEX se ofrece "tal cual" ("as is"), sin garantías de ningún tipo, en la máxima medida permitida por la ley. En particular, no garantizamos: alcance de conexión específico (depende del dispositivo, entorno y obstáculos), ausencia de interrupciones, disponibilidad continua del servicio, ni que el resultado sea adecuado para un propósito particular. <strong>NODEX no sustituye servicios de emergencia, sistemas profesionales de radiocomunicación ni otros medios de comunicación de seguridad crítica.</strong></p>
 
-      <h3><span class="ic">⚖️</span> 6. Límite de responsabilidad</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17"/><path d="M5 21h14"/><path d="M4 7h6M14 7h6"/><path d="M4 7l-2.5 5a2.5 2.5 0 0 0 5 0L4 7z"/><path d="M20 7l-2.5 5a2.5 2.5 0 0 0 5 0L20 7z"/></svg></span> 6. Límite de responsabilidad</h3>
       <p>En la máxima medida permitida por la ley, NODEX y su desarrollador no serán responsables por daños indirectos, incidentales, especiales o consecuentes derivados del uso o la imposibilidad de usar la app, incluyendo — sin limitarse a — pérdida de comunicación en una situación de emergencia, accidentes, o conflictos entre usuarios de una misma sesión. <strong>Esta limitación no excluye ni restringe derechos irrenunciables que correspondan al usuario conforme a la legislación aplicable.</strong></p>
 
-      <h3><span class="ic">💳</span> 7. Compras dentro de la app (Pro)</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span> 7. Compras dentro de la app (Pro)</h3>
       <p>El desbloqueo del nivel Pro se procesa a través de Google Play (o Apple App Store cuando exista). La facturación, los comprobantes, la restauración de compras y los procedimientos de reembolso o disputa se gestionan de acuerdo con las reglas y sistemas de la tienda correspondiente, sin perjuicio de los derechos irrenunciables que pueda reconocer la legislación aplicable. <strong>El desbloqueo Pro queda asociado a la cuenta de la tienda (Google Play o Apple ID) activa en tu dispositivo al momento de la compra, no a una cuenta de NODEX — NODEX no mantiene cuentas de usuario ni un sistema propio de verificación de compras, y se apoya enteramente en los mecanismos de verificación de la tienda correspondiente.</strong> Si cambias de dispositivo o de cuenta de la tienda, usa la función de restaurar compra iniciando sesión con la misma cuenta con la que compraste. Las funcionalidades incluidas en Pro pueden evolucionar con futuras versiones de NODEX y la compra no constituye una garantía de compatibilidad o disponibilidad indefinida en futuros dispositivos, sistemas operativos o versiones.</p>
 
-      <h3><span class="ic">📄</span> 8. Licencia de uso</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> 8. Licencia de uso</h3>
       <p>Te otorgamos una licencia limitada, personal, no exclusiva y no transferible para usar NODEX en tus propios dispositivos, sujeta a estos términos y a las reglas de uso de la tienda desde la que la descargaste (Google Play, y Apple cuando aplique).</p>
 
-      <h3><span class="ic">🔗</span> 9. Términos de terceros</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 0 1 5 5l-1 1"/><path d="M13 18l-1 1a3.5 3.5 0 0 1-5-5l1-1"/></svg></span> 9. Términos de terceros</h3>
       <p>Además de estos términos, debes cumplir los términos de servicio de la tienda desde la que instalaste NODEX (Google Play Terms of Service, y los Apple Media Services Terms and Conditions cuando exista versión iOS).</p>
 
-      <h3><span class="ic">🔞</span> 10. Edad mínima y responsabilidad de menores</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span> 10. Edad mínima y responsabilidad de menores</h3>
       <p>Debes tener al menos <strong>16 años</strong> para usar NODEX. Si tienes entre 16 y 17 años, eres menor de edad conforme a la ley chilena (mayoría de edad: 18 años) — en ese caso, tu padre, madre o representante legal es responsable junto contigo por tu uso de la aplicación y por el contenido de tus comunicaciones. Si eres menor de 16 años, no debes instalar ni usar la aplicación bajo ninguna circunstancia.</p>
 
-      <h3><span class="ic">⏹️</span> 11. Terminación</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/></svg></span> 11. Terminación</h3>
       <p>Podemos discontinuar NODEX o restringir su disponibilidad, total o parcialmente, por razones técnicas, operativas, legales o comerciales. No garantizamos mantenimiento o soporte indefinidos. Lo anterior se entiende sin perjuicio de los derechos que correspondan al usuario conforme a la legislación de protección al consumidor aplicable.</p>
 
-      <h3><span class="ic">✏️</span> 12. Cambios a estos términos</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></span> 12. Cambios a estos términos</h3>
       <p>Cualquier cambio se reflejará actualizando la fecha en la parte superior de esta página. Cuando los cambios sean materiales, podremos proporcionar un aviso adicional dentro de la aplicación o mediante otros medios razonables, cuando corresponda. El uso continuado de la app tras la entrada en vigor de los cambios implica tu aceptación, en la medida permitida por la ley.</p>
 
-      <h3><span class="ic">🏛️</span> 13. Ley aplicable</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17"/><path d="M5 21h14"/><path d="M4 7h6M14 7h6"/><path d="M4 7l-2.5 5a2.5 2.5 0 0 0 5 0L4 7z"/><path d="M20 7l-2.5 5a2.5 2.5 0 0 0 5 0L20 7z"/></svg></span> 13. Ley aplicable</h3>
       <p>Estos términos se rigen por las leyes de la <strong>República de Chile</strong>. Cualquier disputa relacionada con el uso de NODEX se someterá a los tribunales competentes de Chile, sin perjuicio de los derechos irrenunciables que la ley de tu país de residencia pueda reconocerte como consumidor.</p>
 
-      <h3><span class="ic">🛡️</span> 14. Indemnización</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></span> 14. Indemnización</h3>
       <p>Aceptas indemnizar y mantener indemne a NODEX y a su desarrollador frente a cualquier reclamo, demanda, daño o gasto (incluyendo honorarios legales razonables) que un tercero presente como consecuencia de tu uso de la aplicación, del contenido de tus comunicaciones, o de tu incumplimiento de estos términos — excepto en la medida en que dicho reclamo derive de un incumplimiento propio de NODEX.</p>
 
-      <h3><span class="ic">🧩</span> 15. Divisibilidad</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span> 15. Divisibilidad</h3>
       <p>Si alguna disposición de estos términos es declarada inválida o inaplicable por un tribunal competente, esa disposición se interpretará de forma que refleje la intención original de las partes en la mayor medida permitida por la ley, y el resto de los términos permanecerá en pleno vigor y efecto.</p>
 
-      <h3><span class="ic">📋</span> 16. Acuerdo completo</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> 16. Acuerdo completo</h3>
       <p>Estos términos, junto con la Política de Privacidad, constituyen el acuerdo íntegro entre tú y NODEX respecto al uso de la aplicación, y reemplazan cualquier acuerdo o entendimiento previo sobre la misma materia.</p>
 
-      <h3><span class="ic">🌐</span> 17. Idioma del acuerdo</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg></span> 17. Idioma del acuerdo</h3>
       <p>Estos términos se ofrecen en español e inglés. En caso de discrepancia o conflicto entre ambas versiones, prevalecerá la versión en español.</p>
     </section>
 
     <section id="privacidad-es" class="tab-panel" data-tab="privacy">
-      <h2><span class="ic">🔒</span> Política de Privacidad</h2>
+      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Política de Privacidad</h2>
       <p class="meta">Última actualización: 15 de septiembre de 2026 · Contacto: nodex.dev.mobile@gmail.com</p>
 
       <p><strong>NODEX</strong> es una aplicación de comunicación de voz punto a punto (P2P) que funciona sin internet ni servidores propios, usando Bluetooth y Wi-Fi Direct para conectar dispositivos cercanos directamente entre sí.</p>
       <p><strong>Qué NO hace NODEX</strong>: no tiene cuentas de usuario, no tiene servidores propios, no muestra publicidad, no graba ni almacena tus conversaciones de voz, no vende ni comparte datos con terceros con fines publicitarios.</p>
 
-      <h3><span class="ic">📊</span> Datos y cómo se manejan</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="3" height="8"/><rect x="10.5" y="6" width="3" height="14"/><rect x="17" y="9" width="3" height="11"/></svg></span> Datos y cómo se manejan</h3>
       <table>
         <tr><th>Dato</th><th>Qué pasa con él</th></tr>
         <tr><td>Alias/nombre que escribes</td><td>Se comparte únicamente con los dispositivos conectados a tu misma sesión, por el canal cifrado P2P. Nunca sale hacia ningún servidor. No se guarda una vez cierras la sesión.</td></tr>
@@ -315,25 +356,25 @@
         <tr><td>Datos técnicos de diagnóstico y uso (fallos/crashes y eventos mínimos como "se creó una sala" o "una sesión llegó a 2 participantes")</td><td>Recolectados por Firebase Crashlytics (fallos) y Aptabase (eventos de uso). Estos servicios pueden procesar datos técnicos del dispositivo y de la aplicación — por ejemplo, versión de Android/iOS, versión de la app, idioma del sistema, modelo del dispositivo y determinados identificadores técnicos de instalación o sesión necesarios para diagnóstico. NODEX no añade a estos reportes tu alias, código de sala, contenido de audio ni ubicación GPS. Se utilizan para detectar errores, medir estabilidad y mejorar el funcionamiento, no para publicidad.</td></tr>
       </table>
 
-      <h3><span class="ic">🤝</span> Con quién se comparte</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14c2.5.3 4.5 2 4.5 4.5"/></svg></span> Con quién se comparte</h3>
       <p>Con nadie fuera de tu sesión P2P local, salvo los datos técnicos de diagnóstico y uso descritos arriba. No existen servidores propios de NODEX que reciban el contenido de tus comunicaciones. Google Play Services puede intervenir en funciones de conectividad, Google Play gestiona las compras, y Google (Firebase Crashlytics) y Aptabase reciben determinados datos técnicos necesarios para diagnóstico y analítica mínima, cada uno bajo sus propios términos y políticas de privacidad.</p>
 
-      <h3><span class="ic">🌍</span> Transferencia internacional de datos</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg></span> Transferencia internacional de datos</h3>
       <p>Firebase Crashlytics y Aptabase pueden procesar y almacenar los datos técnicos de diagnóstico y uso descritos arriba en servidores ubicados fuera de Chile (incluyendo Estados Unidos), conforme a sus propias políticas de privacidad y salvaguardas de transferencia internacional. Esto no aplica al contenido de tus comunicaciones de voz, que nunca sale de tu sesión P2P local.</p>
 
-      <h3><span class="ic">🔐</span> Seguridad</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Seguridad</h3>
       <p>Cada mensaje y cada fragmento de audio viaja cifrado (AES-256-GCM) entre los dispositivos conectados.</p>
 
-      <h3><span class="ic">🗄️</span> Retención</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><path d="M6 9v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg></span> Retención</h3>
       <p>No guardamos en servidores propios el contenido de tu sesión una vez termina. El idioma elegido y el estado de tu compra Pro se almacenan localmente en tu dispositivo. Los datos técnicos de diagnóstico y uso pueden ser conservados por Firebase Crashlytics y Aptabase conforme a sus políticas, configuraciones y períodos de retención aplicables. NODEX no mantiene una copia independiente de esos datos fuera de dichos servicios.</p>
 
-      <h3><span class="ic">🙋</span> Tus derechos</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></span> Tus derechos</h3>
       <p>NODEX no mantiene cuentas de usuario ni almacena en servidores propios el contenido de tus sesiones. Determinados datos técnicos de diagnóstico y uso pueden ser tratados por proveedores como Firebase Crashlytics y Aptabase, según se describe en esta política. Puedes contactar a NODEX en <strong>nodex.dev.mobile@gmail.com</strong> para realizar consultas sobre privacidad o ejercer los derechos que te reconozca la legislación aplicable. Algunas solicitudes pueden estar técnicamente limitadas cuando los datos no permiten identificar razonablemente a la persona que realiza la solicitud. Desinstalar la app elimina los datos almacenados localmente en el dispositivo.</p>
 
-      <h3><span class="ic">🔞</span> Menores de edad</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span> Menores de edad</h3>
       <p>NODEX no está dirigida a personas menores de <strong>16 años</strong> y no solicita conscientemente sus datos. Si tienes entre 16 y 17 años (menor de edad conforme a la ley chilena), tu padre, madre o representante legal también es responsable, junto contigo, por tu uso de NODEX. Al no requerir cuentas ni datos personales, no existe un mecanismo dentro de la app para verificar la edad más allá de esta restricción declarada.</p>
 
-      <h3><span class="ic">✏️</span> Cambios a esta política</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></span> Cambios a esta política</h3>
       <p>Se reflejarán actualizando la fecha de esta página. Cuando un cambio sea material y la legislación aplicable lo requiera, podremos proporcionar un aviso adicional dentro de la aplicación o por otros medios razonables.</p>
     </section>
   </div>
@@ -342,21 +383,21 @@
   <div class="lang-block" data-lang="en">
 
     <div class="doc-tabs">
-      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic">📜</span> Terms of Use</button>
-      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic">🔒</span> Privacy Policy</button>
+      <button type="button" class="tab-btn active" data-tab="terms" onclick="setTab('terms')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> Terms of Use</button>
+      <button type="button" class="tab-btn" data-tab="privacy" onclick="setTab('privacy')"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Privacy Policy</button>
     </div>
 
     <section id="terms-en" class="tab-panel active-tab" data-tab="terms">
-      <h2><span class="ic">📜</span> Terms of Use and Responsibility</h2>
+      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> Terms of Use and Responsibility</h2>
       <p class="meta">Last updated: September 15, 2026 · Contact: nodex.dev.mobile@gmail.com</p>
 
-      <h3><span class="ic">✅</span> 1. Acceptance of terms</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></span> 1. Acceptance of terms</h3>
       <p>By installing or using NODEX, you accept these terms. If you disagree, don't use the app.</p>
 
-      <h3><span class="ic">ℹ️</span> 2. What NODEX is and isn't</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span> 2. What NODEX is and isn't</h3>
       <p>NODEX is a peer-to-peer (P2P) voice communication tool designed to connect nearby devices directly over Bluetooth/Wi-Fi Direct, without sending voice content to NODEX-operated servers. <strong>NODEX is not designed to monitor, moderate, record, or store the content of voice communications.</strong> Operation may depend on operating-system services and third parties required for connectivity, purchases, diagnostics, and stability, as described in the Privacy Policy.</p>
 
-      <h3><span class="ic">🚫</span> 3. Acceptable use and user responsibility</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.5 18.5l13-13"/></svg></span> 3. Acceptable use and user responsibility</h3>
       <p>You agree to use NODEX only legally and respectfully. Specifically, you agree <strong>not to use NODEX to</strong>:</p>
       <ul>
         <li>Harass, threaten, intimidate, or harm another person.</li>
@@ -366,57 +407,57 @@
       </ul>
       <p><strong>You are solely responsible for the content of your voice communications and for any sessions you create or join.</strong> As explained in section 2, we cannot review, moderate, or remove content from an ongoing conversation — it's your responsibility, same as with any physical walkie-talkie or phone call.</p>
 
-      <h3><span class="ic">🏍️</span> 4. Safety while using NODEX in motion</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L21 20H3L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></span> 4. Safety while using NODEX in motion</h3>
       <p>NODEX may be used as a communication tool during travel and activities in motion. <strong>You must not manually interact with the device when doing so could distract you from driving or compromise safety.</strong> You should configure the session and required controls before starting to drive and use compatible hands-free systems where appropriate. You are responsible for operating any vehicle safely and complying with applicable traffic laws in your country.</p>
 
-      <h3><span class="ic">⚠️</span> 5. No warranties</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L21 20H3L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></span> 5. No warranties</h3>
       <p>NODEX is provided "as is," with no warranties of any kind, to the maximum extent permitted by law. In particular, we do not guarantee a specific connection range (which depends on device, environment, and obstacles), uninterrupted operation, continuous availability, or fitness for a particular purpose. <strong>NODEX does not replace emergency services, professional radio systems, or other safety-critical communication methods.</strong></p>
 
-      <h3><span class="ic">⚖️</span> 6. Limitation of liability</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17"/><path d="M5 21h14"/><path d="M4 7h6M14 7h6"/><path d="M4 7l-2.5 5a2.5 2.5 0 0 0 5 0L4 7z"/><path d="M20 7l-2.5 5a2.5 2.5 0 0 0 5 0L20 7z"/></svg></span> 6. Limitation of liability</h3>
       <p>To the maximum extent permitted by law, NODEX and its developer are not liable for indirect, incidental, special, or consequential damages arising from use or inability to use the app, including — without limitation — loss of communication during an emergency, accidents, or conflicts between users in the same session. <strong>This limitation does not exclude or restrict non-waivable rights available to users under applicable law.</strong></p>
 
-      <h3><span class="ic">💳</span> 7. In-app purchases (Pro)</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></span> 7. In-app purchases (Pro)</h3>
       <p>The Pro tier unlock is processed through Google Play (or Apple's App Store once available). Billing, receipts, purchase restoration, and refund or dispute procedures are handled in accordance with the rules and systems of the relevant store, without prejudice to any non-waivable rights under applicable law. <strong>The Pro unlock is tied to the store account (Google Play or Apple ID) active on your device at the time of purchase, not to a NODEX account — NODEX does not maintain user accounts or its own purchase-verification system, and relies entirely on the relevant store's verification mechanisms.</strong> If you change devices or store accounts, use the restore-purchase feature signed into the same account you purchased with. Features included in Pro may evolve in future NODEX versions, and the purchase does not guarantee indefinite compatibility or availability on future devices, operating systems, or versions.</p>
 
-      <h3><span class="ic">📄</span> 8. License grant</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> 8. License grant</h3>
       <p>We grant you a limited, personal, non-exclusive, non-transferable license to use NODEX on your own devices, subject to these terms and the usage rules of the store you downloaded it from (Google Play, and Apple once applicable).</p>
 
-      <h3><span class="ic">🔗</span> 9. Third-party terms</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M11 6l1-1a3.5 3.5 0 0 1 5 5l-1 1"/><path d="M13 18l-1 1a3.5 3.5 0 0 1-5-5l1-1"/></svg></span> 9. Third-party terms</h3>
       <p>In addition to these terms, you must comply with the terms of service of the store you installed NODEX from (Google Play Terms of Service, and Apple Media Services Terms and Conditions once an iOS version exists).</p>
 
-      <h3><span class="ic">🔞</span> 10. Minimum age and responsibility for minors</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span> 10. Minimum age and responsibility for minors</h3>
       <p>You must be at least <strong>16 years old</strong> to use NODEX. If you are 16 or 17, you are a legal minor under Chilean law (age of majority: 18) — in that case, your parent or legal guardian is responsible, together with you, for your use of the app and the content of your communications. If you are under 16, you must not install or use the app under any circumstance.</p>
 
-      <h3><span class="ic">⏹️</span> 11. Termination</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/></svg></span> 11. Termination</h3>
       <p>We may discontinue NODEX or restrict its availability, in whole or in part, for technical, operational, legal, or commercial reasons. We do not guarantee indefinite maintenance or support. This is without prejudice to any rights users may have under applicable consumer-protection law.</p>
 
-      <h3><span class="ic">✏️</span> 12. Changes to these terms</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></span> 12. Changes to these terms</h3>
       <p>Any change will be reflected by updating the date at the top of this page. Where changes are material, we may provide additional notice in the app or through other reasonable means when appropriate. Continued use after changes take effect constitutes acceptance to the extent permitted by law.</p>
 
-      <h3><span class="ic">🏛️</span> 13. Governing law</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17"/><path d="M5 21h14"/><path d="M4 7h6M14 7h6"/><path d="M4 7l-2.5 5a2.5 2.5 0 0 0 5 0L4 7z"/><path d="M20 7l-2.5 5a2.5 2.5 0 0 0 5 0L20 7z"/></svg></span> 13. Governing law</h3>
       <p>These terms are governed by the laws of the <strong>Republic of Chile</strong>. Any dispute related to the use of NODEX will be submitted to the competent courts of Chile, without prejudice to any non-waivable consumer rights recognized under the laws of your country of residence.</p>
 
-      <h3><span class="ic">🛡️</span> 14. Indemnification</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg></span> 14. Indemnification</h3>
       <p>You agree to indemnify and hold harmless NODEX and its developer from any claim, demand, damage, or expense (including reasonable legal fees) brought by a third party as a result of your use of the app, the content of your communications, or your breach of these terms — except to the extent such claim arises from NODEX's own breach.</p>
 
-      <h3><span class="ic">🧩</span> 15. Severability</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg></span> 15. Severability</h3>
       <p>If any provision of these terms is found invalid or unenforceable by a court of competent jurisdiction, that provision will be interpreted to reflect the parties' original intent to the greatest extent permitted by law, and the remaining terms will remain in full force and effect.</p>
 
-      <h3><span class="ic">📋</span> 16. Entire agreement</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v4h4"/></svg></span> 16. Entire agreement</h3>
       <p>These terms, together with the Privacy Policy, constitute the entire agreement between you and NODEX regarding use of the app, and supersede any prior agreement or understanding on the same subject.</p>
 
-      <h3><span class="ic">🌐</span> 17. Language of this agreement</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg></span> 17. Language of this agreement</h3>
       <p>These terms are provided in Spanish and English. In the event of any discrepancy or conflict between the two versions, the Spanish version will prevail.</p>
     </section>
 
     <section id="privacy-en" class="tab-panel" data-tab="privacy">
-      <h2><span class="ic">🔒</span> Privacy Policy</h2>
+      <h2><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Privacy Policy</h2>
       <p class="meta">Last updated: September 15, 2026 · Contact: nodex.dev.mobile@gmail.com</p>
 
       <p><strong>NODEX</strong> is a peer-to-peer (P2P) voice communication app that works without internet or our own servers, using Bluetooth and Wi-Fi Direct to connect nearby devices directly to each other.</p>
       <p><strong>What NODEX does NOT do</strong>: no user accounts, no servers of our own, no ads, no recording or storing your voice conversations, no selling or sharing data with third parties for advertising.</p>
 
-      <h3><span class="ic">📊</span> Data and how it's handled</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="3" height="8"/><rect x="10.5" y="6" width="3" height="14"/><rect x="17" y="9" width="3" height="11"/></svg></span> Data and how it's handled</h3>
       <table>
         <tr><th>Data</th><th>What happens to it</th></tr>
         <tr><td>The alias/name you type</td><td>Shared only with devices connected to your session, over the encrypted P2P channel. Never leaves toward any server. Not kept once you close the session.</td></tr>
@@ -428,25 +469,25 @@
         <tr><td>Technical diagnostic and usage data (crashes/failures and minimal events such as "a room was created" or "a session reached 2 participants")</td><td>Collected by Firebase Crashlytics (failures) and Aptabase (usage events). These services may process technical device and app data — for example, Android/iOS version, app version, system language, device model, and certain technical installation or session identifiers required for diagnostics. NODEX does not add your alias, room code, audio content, or GPS location to these reports. The data is used to detect bugs, measure stability, and improve operation, not for advertising.</td></tr>
       </table>
 
-      <h3><span class="ic">🤝</span> Who we share it with</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14c2.5.3 4.5 2 4.5 4.5"/></svg></span> Who we share it with</h3>
       <p>No one outside your local P2P session, except for the technical diagnostic and usage data described above. There are no NODEX-operated servers receiving the content of your communications. Google Play Services may support connectivity features, Google Play handles purchases, and Google (Firebase Crashlytics) and Aptabase receive certain technical data required for diagnostics and minimal analytics, each under their own terms and privacy policies.</p>
 
-      <h3><span class="ic">🌍</span> International data transfers</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg></span> International data transfers</h3>
       <p>Firebase Crashlytics and Aptabase may process and store the technical diagnostic and usage data described above on servers located outside Chile (including the United States), under their own privacy policies and international-transfer safeguards. This does not apply to the content of your voice communications, which never leaves your local P2P session.</p>
 
-      <h3><span class="ic">🔐</span> Security</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span> Security</h3>
       <p>Every message and audio frame is encrypted (AES-256-GCM) between connected devices.</p>
 
-      <h3><span class="ic">🗄️</span> Retention</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><path d="M6 9v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V9"/><path d="M10 13h4"/></svg></span> Retention</h3>
       <p>NODEX does not store the content of your session on its own servers once the session ends. Your chosen language and Pro status are stored locally on your device. Technical diagnostic and usage data may be retained by Firebase Crashlytics and Aptabase according to their applicable policies, settings, and retention periods. NODEX does not keep a separate copy of that data outside those services.</p>
 
-      <h3><span class="ic">🙋</span> Your rights</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></span> Your rights</h3>
       <p>NODEX does not maintain user accounts or store session content on its own servers. Certain technical diagnostic and usage data may be processed by providers such as Firebase Crashlytics and Aptabase as described in this policy. You may contact NODEX at <strong>nodex.dev.mobile@gmail.com</strong> with privacy questions or to exercise rights available under applicable law. Some requests may be technically limited where the data does not allow us to reasonably identify the person making the request. Uninstalling the app removes data stored locally on the device.</p>
 
-      <h3><span class="ic">🔞</span> Children</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></span> Children</h3>
       <p>NODEX is not directed at anyone under <strong>16</strong> and does not knowingly collect their data. If you are 16 or 17 (a legal minor under Chilean law), your parent or legal guardian is also responsible, together with you, for your use of NODEX. Since the app requires no accounts or personal data, there is no in-app mechanism to verify age beyond this stated restriction.</p>
 
-      <h3><span class="ic">✏️</span> Changes to this policy</h3>
+      <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></span> Changes to this policy</h3>
       <p>Will be reflected by updating this page's date. Where a change is material and applicable law requires it, we may provide additional notice in the app or through other reasonable means.</p>
     </section>
   </div>
